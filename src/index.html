@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Interfejs</title>
+	</head>
+	<body>
+
+		<div class="contact-form">
+			<form id="form">
+				<p><label>Title <input type="text" id="title-input" required minlength="3" maxlength="50" />
+					</label><p>
+				<label>Description <textarea
+																		 rows="5"
+																		 id="description-input"
+																		 required
+																		 minlength="10"
+																		 maxlength="400"
+																		 ></textarea></label>
+				</p>
+				<p><label>Time to done <input type="date" id="time-input" required /></p>
+				</label><p>
+			<label>Owner <select name="" id="owner-input" required
+													 ><option value="user_1">user_1</option
+				><option value="user_2">user_2</option
+				><option value="user_3">user_3</option></select
+				>
+				</p>
+			<button type="submit" id="submit-btn">Submit</button>
+			</form>
+		</div>
+	<table class="list" id="task-table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Date_to</th>
+				<th>Owner</th>
+				<th>Change status</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	</body>
+</html>
