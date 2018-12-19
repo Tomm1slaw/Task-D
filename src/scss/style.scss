@@ -1,0 +1,40 @@
+.contact-form {
+	display: flex;
+	justify-content: center;
+	flex-basis: 1;
+	margin: 0 auto;
+	max-width: 350px;
+	border: 3px solid blue;
+	border-radius: 5%;
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 20px;
+	input,
+	textarea,
+	select {
+		width: 100%;
+		padding: 5px;
+		display: table;
+	}
+	button {
+		border: none;
+		background: blue;
+		color: white;
+		text-transform: uppercase;
+		cursor: pointer;
+		padding: 10px;
+		border-radius: 3px;
+	}
+}
+
+.list {
+	border: 1px solid gray;
+	margin: 0 auto;
+	width: 100%;
+	th {
+		background: gray;
+	}
+	tr {
+		border-bottom: 1px solid gray;
+	}
+}
