@@ -12,55 +12,50 @@ var form = document.querySelector('#form');
 
 //variables
 var date = format(Date.now(), 'DD:MM:YYYY HH:mm:ss');
-var status = 'nowe';
-var selectedRow = null;
+var status = ['nowe', 'w_trakcie', 'wykonane'];
 
-//add new table row
-function insertNewRecord(data) {
-	taskTable.querySelector('tbody')[0];
-	var newRow = taskTable.insertRow();
-	var cell1 = newRow.insertCell(0);
-	cell1.innerHTML = data.id;
-	var cell2 = newRow.insertCell(1);
-	cell2.innerHTML = data.title;
-	var cell3 = newRow.insertCell(2);
-	cell3.innerHTML = data.description;
-	var cell4 = newRow.insertCell(3);
-	cell4.innerHTML = data.status;
-	var cell5 = newRow.insertCell(4);
-	cell5.innerHTML = data.date;
-	var cell6 = newRow.insertCell(5);
-	cell6.innerHTML = data.time;
-	var cell7 = newRow.insertCell(6);
-	cell7.innerHTML = data.owner;
-	var cell8 = newRow.insertCell(7);
-	//confirm without any function
-	cell8.innerHTML = '<button onclick="confirm(\'wykonane\')">Status</button>';
+function insertNewTask(data) {
+   taskTable.querySelector('tbody')[0];
+   var newRow = taskTable.insertRow();
+   var cell1 = newRow.insertCell(0);
+   cell1.innerHTML = data[0];
+   var cell2 = newRow.insertCell(1);
+   cell2.innerHTML = data[1];
+   var cell3 = newRow.insertCell(2);
+   cell3.innerHTML = data[2];
+   var cell4 = newRow.insertCell(3);
+   cell4.innerHTML = data[3];
+   var cell5 = newRow.insertCell(4);
+   cell5.innerHTML = data[4];
+   var cell6 = newRow.insertCell(5);
+   cell6.innerHTML = data[5];
+   var cell7 = newRow.insertCell(6);
+   cell7.innerHTML = data[6];
+   var cell8 = newRow.insertCell(7);
+   cell8.innerHTML = '<button onclick="confirm(\'wykonane\')">Status</button>';
 }
 
-//build data from form and variables
-function readFormData() {
-	var formData = {};
-	formData['id'] = uuidv4();
-	formData['title'] = titleInput.value;
-	formData['description'] = descriptionInput.value;
-	formData['status'] = status;
-	formData['date'] = date;
-	formData['time'] = timeInput.value;
-	formData['owner'] = ownerInput.value;
-
-	return formData;
+function createNewTask() {
+   var formData = [];
+   formData.push(uuidv4());
+   formData.push(titleInput.value);
+   formData.push(descriptionInput.value);
+   formData.push(status[0]);
+   formData.push(date);
+   formData.push(timeInput.value);
+   formData.push(ownerInput.value);
+   return formData;
 }
 
-//send data
 form.addEventListener('submit', function(e) {
-	e.preventDefault(); //stop default action
-	var formData = readFormData();
-	localStorage.setItem('object', JSON.stringify(formData)); //send data to local storage
-	if (selectedRow === null) {
-		insertNewRecord(formData);
-	}
+   e.preventDefault();
+   var formData = createNewTask();
+   insertNewTask(formData);
+   localStorage.setItem('task', JSON.stringify(formData));
 });
 
-//show data in console
-console.log(JSON.parse(localStorage.getItem('object')));
+(function init() {
+   var data = localStorage.getItem('task');
+   var newData = JSON.parse(data);
+   insertNewTask(newData);
+})();
